@@ -1,0 +1,520 @@
+\usepackage{etex}
+\usepackage{amssymb,amsfonts,amsmath,amsthm}
+\usepackage{graphicx}
+\usepackage[usenames,x11names,dvipsnames,svgnames,table]{xcolor}
+\usepackage{colortbl}
+\usepackage{makecell}
+\renewcommand\cellalign{tl}
+\usepackage{amsmath,amssymb}
+\usepackage{dsfont}
+\usepackage{amsfonts}
+\usepackage{bm}
+\usepackage{booktabs} %toprule midrule...
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  filecolor=black,
+  urlcolor=DodgerBlue4,
+  breaklinks=false,
+  % linkbordercolor=red,% hyperlink borders will be red
+  % pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt
+}
+\usepackage{breakurl}
+\usepackage{xurl}
+\usepackage{array}
+\usepackage{xr}
+\usepackage{multirow}    
+% \usepackage[T1,euler-digits]{eulervm}
+% \usepackage{times}
+% \usepackage{pxfonts}
+\usepackage{tikz}
+% Yi use the catchfile package in 
+% Figures/PFSA_3State_transition_1.tex 
+% to read file as input for \foreach.
+\usepackage{catchfile} 
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.6}
+\usetikzlibrary{shapes,calc,shadows,fadings,arrows,decorations.pathreplacing,automata,positioning}
+\usetikzlibrary{decorations.pathmorphing,shapes}
+
+\usetikzlibrary{external}
+\usetikzlibrary{decorations.text}
+\usepgfplotslibrary{colorbrewer} 
+\usepgfplotslibrary{fillbetween} 
+
+\tikzexternalize[prefix=./Figures/External/]% activate externalization!
+\tikzexternaldisable
+% \addtolength{\voffset}{.1in}  
+\usepackage{geometry}
+\geometry{a4paper, left=.65in,right=.65in,top=.8in,bottom=0.8in}
+
+\addtolength{\textwidth}{-.1in}    
+\addtolength{\hoffset}{.05in}    
+\addtolength{\textheight}{.1in}    
+\addtolength{\footskip}{0in}    
+\usepackage{rotating}
+\definecolor{nodecol}{RGB}{240,240,220}
+\definecolor{nodeedge}{RGB}{240,240,225}
+\definecolor{edgecol}{RGB}{130,130,130}
+\tikzset{%
+  fshadow/.style={      preaction={
+      fill=black,opacity=.3,
+      path fading=circle with fuzzy edge 20 percent,
+      transform canvas={xshift=1mm,yshift=-1mm}
+    }} 
+}
+\usetikzlibrary{pgfplots.dateplot}
+\usetikzlibrary{patterns}
+\usetikzlibrary{decorations.markings}
+\usepackage{fancyhdr}
+\usepackage{mathtools}
+\usepackage{datetime}
+\usepackage{comment}
+%% ## Equation Space Control---------------------------
+\def\EQSP{5pt}
+\newcommand{\mltlne}[2][\EQSP]{\begingroup\setlength\abovedisplayskip{#1}\setlength\belowdisplayskip{#1}\begin{equation}\begin{multlined} #2 \end{multlined}\end{equation}\endgroup\noindent}
+\newcommand{\cgather}[2][\EQSP]{\begingroup\setlength\abovedisplayskip{#1}\setlength\belowdisplayskip{#1}\begin{gather} #2 \end{gather}\endgroup\noindent}
+\newcommand{\cgathers}[2][\EQSP]{\begingroup\setlength\abovedisplayskip{#1}\setlength\belowdisplayskip{#1}\begin{gather*} #2 \end{gather*}\endgroup\noindent}
+\newcommand{\calign}[2][\EQSP]{\begingroup\setlength\abovedisplayskip{#1}\setlength\belowdisplayskip{#1}\begin{align} #2 \end{align}\endgroup\noindent}
+\newcommand{\caligns}[2][\EQSP]{\begingroup\setlength\abovedisplayskip{#1}\setlength\belowdisplayskip{#1}\begin{align*} #2 \end{align*}\endgroup\noindent}
+\newcommand{\mnp}[2]{\begin{minipage}{#1}#2\end{minipage}} 
+%% COLOR DEFS------------------------------------------
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{defn}{Definition}
+\newtheorem{exmpl}{Example}
+\newtheorem{rem}{Remark}
+\newtheorem{notn}{Notation}
+%% ------------PROOF INCLUSION -----------------
+\def\NOPROOF{Proof omitted.}
+\newif\ifproof
+\prooffalse % or \draftfalse
+\newcommand{\Proof}[1]{
+  \ifproof
+  \begin{IEEEproof}
+    #1\end{IEEEproof}
+  \else
+  \NOPROOF
+  \fi
+}
+%% ------------ -----------------
+\newcommand{\DETAILS}[1]{#1}
+%% ------------ -----------------
+% color commands------------------------
+\newcommand{\etal}{\textit{et} \mspace{3mu} \textit{al.}}
+% \renewcommand{\algorithmiccomment}[1]{$/** $ #1 $ **/$}
+\newcommand{\vect}[1]{\textbf{\textit{#1}}}
+\newcommand{\figfont}{\fontsize{8}{8}\selectfont\strut}
+\newcommand{\hlt}{ \bf \sffamily \itshape\color[rgb]{.1,.2,.45}}
+\newcommand{\pitilde}{\widetilde{\pi}}
+\newcommand{\Pitilde}{\widetilde{\Pi}}
+\newcommand{\bvec}{\vartheta}
+\newcommand{\algo}{\textrm{\bf\texttt{GenESeSS}}\xspace}
+\newcommand{\xalgo}{\textrm{\bf\texttt{xGenESeSS}}\xspace}
+\newcommand{\FNTST}{\bf }
+\newcommand{\FNTED}{\color{darkgray} \scriptsize $\phantom{.}$}
+\renewcommand{\baselinestretch}{.95}
+\newcommand{\sync}{\otimes}
+\newcommand{\psync}{\hspace{3pt}\overrightarrow{\hspace{-3pt}\sync}}
+% \newcommand{\psync}{\raisebox{-4pt}{\begin{tikzpicture}\node[anchor=south] (A) {$\sync$};
+%   \draw [->,>=stealth] ([yshift=-2pt, xshift=2pt]A.north west) -- ([yshift=-2pt]A.north east); %\end{tikzpicture}}}
+\newcommand{\base}[1]{\llbracket #1 \rrbracket}
+\newcommand{\nst}{\textrm{\sffamily\textsc{Numstates}}}
+\newcommand{\HA}{\boldsymbol{\mathds{H}}}
+\newcommand{\eqp}{ \vartheta }
+\newcommand{\entropy}[1]{\boldsymbol{h}\left ( #1 \right )}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}%
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}%
+\newcommand{\absB}[1]{\big\lvert #1 \big\rvert}%
+% #############################################################
+% #############################################################
+% PREAMBLE ####################################################
+% #############################################################
+% #############################################################
+% \usepackage{pnastwoF}
+\DeclareMathOperator*{\argmax}{argmax}
+\newcommand{\ND}{ \mathcal{N}  }
+\usepackage[linesnumbered,ruled,vlined,noend]{algorithm2e}
+\newcommand{\captionN}[1]{\caption{\color{darkgray} \sffamily \fontsize{9}{11}\selectfont #1  }}
+\newcommand{\btl}{\ \textbf{\small\sffamily bits/letter}}
+\usepackage{txfonts}
+\usepackage{ccfonts}
+%%% save defaults
+\renewcommand{\rmdefault}{phv} % Arial
+\renewcommand{\sfdefault}{phv} % Arial
+\edef\keptrmdefault{\rmdefault}
+\edef\keptsfdefault{\sfdefault}
+\edef\keptttdefault{\ttdefault}
+
+% \usepackage{kerkis}
+\usepackage[OT1]{fontenc}
+\usepackage{concmath}
+% \usepackage[T1]{eulervm} 
+% \usepackage[OT1]{fontenc}
+%%% restore defaults
+\edef\rmdefault{\keptrmdefault}
+\edef\sfdefault{\keptsfdefault}
+\edef\ttdefault{\keptttdefault}
+\tikzexternalenable
+% ##########################################################
+\tikzfading[name=fade out,
+inner color=transparent!0,
+outer color=transparent!100]
+% ###################################
+\newcommand{\xtitaut}[2]{
+  \noindent\mnp{\textwidth}{
+    \mnp{\textwidth}{\raggedright\Huge \bf \sffamily #1}
+
+    \vskip 1em
+
+    {\bf \sffamily #2}
+  }
+  \vskip 2em
+}
+% ###################################
+% ###################################
+\tikzset{wiggle/.style={decorate, decoration={random steps, amplitude=10pt}}}
+\usetikzlibrary{decorations.pathmorphing}
+\pgfdeclaredecoration{Snake}{initial}
+{
+  \state{initial}[switch if less than=+.625\pgfdecorationsegmentlength to final,
+  width=+.3125\pgfdecorationsegmentlength,
+  next state=down]{
+    \pgfpathmoveto{\pgfqpoint{0pt}{\pgfdecorationsegmentamplitude}}
+  }
+  \state{down}[switch if less than=+.8125\pgfdecorationsegmentlength to end down,
+  width=+.5\pgfdecorationsegmentlength,
+  next state=up]{
+    \pgfpathcosine{\pgfqpoint{.25\pgfdecorationsegmentlength}{-1\pgfdecorationsegmentamplitude}}
+    \pgfpathsine{\pgfqpoint{.25\pgfdecorationsegmentlength}{-1\pgfdecorationsegmentamplitude}}
+  }
+  \state{up}[switch if less than=+.8125\pgfdecorationsegmentlength to end up,
+  width=+.5\pgfdecorationsegmentlength,
+  next state=down]{
+    \pgfpathcosine{\pgfqpoint{.25\pgfdecorationsegmentlength}{\pgfdecorationsegmentamplitude}}
+    \pgfpathsine{\pgfqpoint{.25\pgfdecorationsegmentlength}{\pgfdecorationsegmentamplitude}}
+  }
+  \state{end down}[width=+.3125\pgfdecorationsegmentlength,
+  next state=final]{
+    \pgfpathcosine{\pgfqpoint{.15625\pgfdecorationsegmentlength}{-.5\pgfdecorationsegmentamplitude}}
+    \pgfpathsine{\pgfqpoint{.15625\pgfdecorationsegmentlength}{-.5\pgfdecorationsegmentamplitude}}
+  }
+  \state{end up}[width=+.3125\pgfdecorationsegmentlength,
+  next state=final]{
+    \pgfpathcosine{\pgfqpoint{.15625\pgfdecorationsegmentlength}{.5\pgfdecorationsegmentamplitude}}
+    \pgfpathsine{\pgfqpoint{.15625\pgfdecorationsegmentlength}{.5\pgfdecorationsegmentamplitude}}
+  }
+  \state{final}{\pgfpathlineto{\pgfpointdecoratedpathlast}}
+}
+% ###################################
+% ###################################
+\newcolumntype{L}[1]{>{\rule{0pt}{2ex}\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\rule{0pt}{2ex}\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\rule{0pt}{2ex}\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+
+
+
+\newcommand{\drhh}[8]{
+  \begin{axis}[semithick,
+    font=\bf \sffamily \fontsize{7}{7}\selectfont,
+    name=H2,
+    at=(#4), anchor=#5,
+    xshift=.3in,
+    yshift=-.3in,
+    width=\WDT, 
+    height=\HGT, 
+    title={{\LARGE G } ROC area distribution (Out-of-sample)}, 
+    title style={align=right, },legend cell align=left,
+    legend style={ xshift=3.5in, yshift=-.6in, draw=white, fill= gray, fill opacity=0.2, 
+      text opacity=1,},
+    axis line style={black!80, opacity=0,   thick,,ultra thin, rounded corners=0pt},
+    axis on top=false, 
+    xlabel={ROC area},
+    ylabel={probability},
+    ylabel style={yshift=-.25in},
+    xlabel style={yshift=.1in},
+    grid style={dashed, gray!50},
+    % grid,
+    axis background/.style={top color=gray!1,bottom color=gray!2},
+    enlargelimits=false, 
+    scale only axis=true,
+    ymin=0,
+    % xmin=.7,xmax=1.0,
+    ylabel style={yshift=.05in},
+    major tick length=0pt,yticklabel style={/pgf/number format/fixed,/pgf/number format/precision=2},xticklabel style={/pgf/number format/fixed,/pgf/number format/precision=2},
+    #7,
+    ]
+    \addplot [
+    fill=#8,
+    thick,
+    draw=white,
+    opacity=1,
+    hist={density,bins=10},
+    ] table [y index=#3] {#1};
+    % \addlegendentry{$\Delta$ ROC};
+    \addplot [very thick, Red2,, opacity=.95] gnuplot [raw gnuplot] {plot '#1' u #2:(1./#6.) smooth kdensity};
+    % 
+    % \draw[thin,black ] (axis cs:.89291,\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:.89291,\pgfkeysvalueof{/pgfplots/ymax}) node [midway,right, pos=0.2] {89.3\%};
+    % \addlegendentry{kde};
+  \end{axis}
+}
+
+
+\newcommand{\erhh}[6]{
+  \begin{axis}[semithick,
+    font=\bf \sffamily \fontsize{7}{7}\selectfont,
+    name=H2,
+    at=(#3), anchor=#4,
+    xshift=.3in,
+    yshift=-.3in,
+    width=\WDT, 
+    height=\HGT, 
+    title style={align=center, },legend cell align=left,
+    legend style={ xshift=3.5in, yshift=-.6in, draw=white, fill= gray, fill opacity=0.2, 
+      text opacity=1,},
+    axis line style={black!80, opacity=0,   thick,,ultra thin, rounded corners=0pt},
+    axis on top=false, 
+    xlabel={ROC area},
+    ylabel={probability},
+    ylabel style={yshift=-.25in},
+    xlabel style={yshift=.1in},
+    grid style={dashed, gray!50},
+    % grid,
+    axis background/.style={top color=gray!1,bottom color=gray!2},
+    enlargelimits=false, 
+    scale only axis=true,
+    % ymin=0, 
+    % xmin=.7,xmax=1.0,
+    ylabel style={yshift=.05in},
+    major tick length=0pt,yticklabel style={/pgf/number format/fixed,/pgf/number format/precision=2},xticklabel style={/pgf/number format/fixed,/pgf/number format/precision=2},
+    #5,
+    ]
+    \addplot[semithick, #6]
+    table[x expr=(\coordindex+1),y expr=(\thisrowno{#2})] {#1};
+    % \addlegendentry{Cullman, Alabama};
+  \end{axis}
+}
+% ################################################
+% ################################################
+% ################################################
+% ################################################
+\def\DISCLOSURE#1{\def\disclosure{#1}}
+\DISCLOSURE{\raisebox{15pt}{$\phantom{XxxX}$This sheet contains proprietary information 
+    not to be released to third parties except for the explicit purpose of evaluation.}
+}
+% ####################################
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\paren}[1]{\left( #1 \right)}
+\newcommand{\bracket}[1]{\left[ #1 \right]}
+% \newcommand{\norm}[1]{\left\Vert #1 \right\Vert}
+\newcommand{\nrm}[1]{\left\llbracket{#1}\right\rrbracket}
+\newcommand{\parenBar}[2]{\paren{#1\,{\left\Vert\,#2\right.}}}
+\newcommand{\parenBarl}[2]{\paren{\left.#1\,\right\Vert\,#2}}
+\newcommand{\ie}{$i.e.$\xspace}
+\newcommand{\addcitation}{\textcolor{black!50!red}{\textbf{ADD CITATION}}}
+\newcommand{\subtochange}[1]{{\color{black!50!green}{#1}}}
+\newcommand{\tobecompleted}{{\color{black!50!red}TO BE COMPLETED.}}
+
+
+\newcommand{\pIn}{\mathscr{P}_{\textrm{in}}}
+\newcommand{\pOut}{\mathscr{P}_{\textrm{out}}}
+\newcommand{\aIn}[1][\Sigma]{#1_{\textrm{in}}}
+\newcommand{\aOut}[1][\Sigma]{#1_{\textrm{out}}}
+\newcommand{\xin}[1]{#1_{\textrm{in}}}
+\newcommand{\xout}[1]{#1_{\textrm{out}}}
+
+\newcommand{\R}{\mathbb{R}} % Set of real numbers
+\newcommand{\F}[1][]{\mathcal{F}_{#1}}
+\newcommand{\SR}{\mathcal{S}} % Semiring of sets
+\newcommand{\RR}{\mathcal{R}} % Ring of sets
+\newcommand{\N}{\mathbb{N}} % Set of natural numbers (0 included)
+
+
+\newcommand{\Pp}[1][n]{\mathscr{P}^+_{#1}}
+\renewcommand{\entropy}[1]{\boldsymbol{h}\left ( #1 \right )}
+
+
+
+\makeatletter
+\pgfdeclarepatternformonly[\hatchdistance,\hatchthickness]{flexible hatch}
+{\pgfqpoint{0pt}{0pt}}
+{\pgfqpoint{\hatchdistance}{\hatchdistance}}
+{\pgfpoint{\hatchdistance-1pt}{\hatchdistance-1pt}}%
+{
+  \pgfsetcolor{\tikz@pattern@color}
+  \pgfsetlinewidth{\hatchthickness}
+  \pgfpathmoveto{\pgfqpoint{0pt}{0pt}}
+  \pgfpathlineto{\pgfqpoint{\hatchdistance}{\hatchdistance}}
+  \pgfusepath{stroke}
+}
+\makeatother
+\pgfdeclarepatternformonly{north east lines wide}%
+{\pgfqpoint{-1pt}{-1pt}}%
+{\pgfqpoint{10pt}{10pt}}%
+{\pgfqpoint{9pt}{9pt}}%
+{
+  \pgfsetlinewidth{0.4pt}
+  \pgfpathmoveto{\pgfqpoint{0pt}{0pt}}
+  \pgfpathlineto{\pgfqpoint{9.1pt}{9.1pt}}
+  \pgfusepath{stroke}
+}
+\makeatletter
+
+\pgfdeclarepatternformonly[\hatchdistance,\hatchthickness]{flexible hatchB}
+{\pgfqpoint{0pt}{\hatchdistance}}
+{\pgfqpoint{\hatchdistance}{0pt}}
+{\pgfpoint{1pt}{\hatchdistance-1pt}}%
+{
+  \pgfsetcolor{\tikz@pattern@color}
+  \pgfsetlinewidth{\hatchthickness}
+  \pgfpathmoveto{\pgfqpoint{0pt}{\hatchdistance}}
+  \pgfpathlineto{\pgfqpoint{\hatchdistance}{0pt}}
+  \pgfusepath{stroke}
+}    \makeatother
+
+ 
+\def\TPR{\textrm{TPR}\xspace}
+\def\TNR{\textrm{TNR}\xspace}
+\def\FPR{\textrm{FPR}\xspace}
+\def\PPV{\textrm{PPV}\xspace}
+
+\definecolor{zeroEdge}{rgb}{.930, .450, .43}
+\definecolor{zeroEdge}{rgb}{0,0,0}
+\definecolor{oneEdge}{rgb}{.37, .52, .54}
+\definecolor{oneEdge}{rgb}{0, .5, .5}
+\definecolor{oneEdger}{rgb}{1, .1, .1}
+\definecolor{twoEdge}{rgb}{.5, 0, .5}
+\definecolor{gNode}{rgb}{.14, .33, .54}
+\definecolor{nNode}{RGB}{58, 191, 109}
+\definecolor{nNode}{RGB}{0,0,0}
+
+\tikzstyle{state} = [circle, inner sep=1, fill=black!30, minimum size=15]
+\tikzstyle{zeroState} = [circle, inner sep=0, draw=zeroEdge, fill=zeroEdge]
+\tikzstyle{oneState} = [circle, inner sep=0, draw=oneEdge, fill=oneEdge]
+
+\tikzstyle{edge} = [-latex, ultra thick]
+\tikzstyle{edgeP} = [fill=gray,opacity=.5]
+\tikzstyle{edge0} = [
+edge, 
+draw=zeroEdge, 
+% preaction={
+% transform canvas={shift={(1pt,-.05pt)}},
+% draw=zeroEdge!20,
+% very thick
+% }
+]
+\tikzstyle{edge1} = [
+edge, 
+draw=oneEdge,
+% preaction={
+% transform canvas={shift={(1pt,-.05pt)}},
+% draw=oneEdge!20,
+% very thick
+% }
+]
+\tikzstyle{edge1r} = [
+edge, 
+draw=oneEdger,
+% preaction={
+% transform canvas={shift={(1pt,-.05pt)}},
+% draw=oneEdge!20,
+% very thick
+% }
+]
+
+\tikzstyle{gEdge} = [
+edge,
+draw=gNode,
+% preaction={
+% transform canvas={shift={(1pt,-.05pt)}},
+% draw=gNode!20,
+% very thick
+% }
+]
+\tikzstyle{gEdgeLight} = [
+edge,
+dashed,
+draw=gNode!25,
+% preaction={
+% transform canvas={shift={(1pt,-.05pt)}},
+% draw=gNode!5,
+% very thick
+% }
+]
+\tikzstyle{nEdge} = [
+edge,
+draw=gNode!80,
+% preaction={
+% transform canvas={shift={(1pt,-.05pt)}},
+% draw=gNode!20,
+% thick
+% }
+]    
+% \begin{tikzpicture}
+%   \def\a{40}
+%   \def\h{1.2}
+%   \def\d{1.5}
+%   \def\s{10}
+%   \def\w{1.65}
+%   \def\r{0.8}
+% \clip (-1.2*\d,-.6*\h) rectangle (1.35*\d,1.25*\h);
+%   \node[state, minimum size=8] (A0) at (0, \h) {};
+%   \node[zeroState, minimum size=8] (A) at (-.5*\d, 0) {};
+%   \node[oneState, minimum size=8] (B) at (.5*\d, 0) {};
+%   \path[edge0, shorten <=.03cm, shorten >=.0cm] (A) to[out=180-\a, in=180+\a-5, looseness=15] node[pos=.5,left] {\textcolor{zeroEdge}{$0$}} (A);
+%   \path[edge1, shorten <=.03cm, shorten >=.03cm] (A) to[out=\a+5, in=180-\a] node[pos=.5,above] {\textcolor{oneEdge}{$1$}} (B);
+%   \path[edge1, shorten <=.03cm, shorten >=.03cm] (B) to[out=-\a, in=\a-5, looseness=15] node[pos=.5,right] {\textcolor{oneEdge}{$1$}} (B);
+%   \path[edge0, shorten <=.03cm, shorten >=.03cm] (B) to[out=180+\a+5, in=-\a] node[pos=.5,below] {\textcolor{zeroEdge}{$0$}} (A);
+
+%   \path[edge1, shorten <=.03cm, shorten >=.03cm] (A0) to[out=-10, in=90] node[pos=.5,above,right] {\textcolor{oneEdge}{$1$}} (B);
+%   \path[edge0, shorten <=.03cm, shorten >=.03cm] (A0) to[out=180+10, in=90] node[pos=.5,above,left] {\textcolor{zeroEdge}{$0$}} (A);
+% \end{tikzpicture}
+
+%\externaldocument[SI-]{SI}
+
+%--------------------------------ceiling bracket---------------------------
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\renewcommand{\ceil}[1]{\left\lceil{#1}\right\rceil}
+
+%------------------------------labeled equation----------------------------
+\newcommand{\myeq}[2]{\mathrel{\stackrel{\makebox[0pt]{\mbox{\normalfont\scriptsize #1}}}{#2}}}
+%-------------------------------scalar product of a vector------------------
+% \newcommand{\scalarProd}{\dot{\sim}}
+
+%---------------------------------------Algorithms----------------------------------------
+
+\newcounter{Dcounter}
+\setcounter{Dcounter}{1}
+\newcommand{\DQS}[1]{
+  \ifdraftQ{
+    \marginpar{
+      \tikzexternaldisable 
+      \tikz{
+        \node[
+          rounded corners=5pt,
+          draw=none,
+          thick,
+          fill=black!10,
+          font=\sffamily\fontsize{7}{8}\selectfont
+        ]{\mnp{.3in} {\color{Red3}\raggedright  \#\theDcounter.~#1}}; 
+      }
+    }
+  }
+  \stepcounter{Dcounter}\xspace
+  \fi
+}
+
+\newcounter{sarrow}
+\newcommand\xrsquigarrow[1]{%
+\stepcounter{sarrow}%
+\begin{tikzpicture}[decoration=snake]
+\node (\thesarrow) {\strut#1};
+\draw[-,decorate, ultra thick] (\thesarrow.south west) -- (\thesarrow.south east);
+\end{tikzpicture}%
+}

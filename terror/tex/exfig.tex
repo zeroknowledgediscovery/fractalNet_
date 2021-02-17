@@ -1,0 +1,45 @@
+\documentclass[11pt,onecolumn,compsoc]{IEEEtran}
+\input{preamble.tex} 
+
+\begin{document}
+
+
+\begin{table}[t]
+\centering
+\captionN{Dataset Statistics, Data Sources, and Variable Explanation}
+\label{tab:AppStat}
+
+\begin{tabular}{p{.18\textwidth}|p{.3\textwidth}p{.3\textwidth}}
+\toprule
+& Middle East & Syria \\
+\midrule
+temporal resolution & $1$ day & $1$ day  \\ 
+\arrayrulecolor{black!30}\midrule
+prediction horizon & $7$ days & $7$ days \\
+\arrayrulecolor{black!30}\midrule
+\multirow{2}{*}{spatial range} & latitude: $[4S, 49N]$ & latitude: $[29N, 37N]$ \\
+              				   & longitude: $[0E, 84E]$ & longitude: $[33E, 47E]$ \\
+\arrayrulecolor{black!30}\midrule
+spatial resolution & $50 \times 50$ grid & $25 \times 25$ grid \\
+\arrayrulecolor{black!30}\midrule
+train period & 12/01/01 to 15/12/31 & 12/01/01 to 15/12/31 \\
+\arrayrulecolor{black!30}\midrule
+test period & 16/01/01 to 16/12/31 & 16/01/01 to 16/12/31 \\ 
+\arrayrulecolor{black!30}\midrule
+source & \url{https://start.umd.edu/gtd/} & \url{https://start.umd.edu/gtd/} \\
+\arrayrulecolor{black!30}\midrule
+event description 
+& \multicolumn{2}{l}{
+	\begin{minipage}{.6\textwidth}
+	\textbf{Personnel}: armed assault, assassination, hijacking, and hostage taking. \\
+	\textbf{Facility}: bombing explosion and facility infrastructure attack.
+	\end{minipage}
+} \\
+\arrayrulecolor{black}\midrule
+\multirow{2}{*}{event frequencies} & Personnel: $7.5\%$ &  Personnel: $4.6\%$ \\
+								   & Facility: $11.2\%$ &  Facility: $7.6\%$ \\
+\arrayrulecolor{black}\bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}
