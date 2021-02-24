@@ -1,0 +1,5 @@
+loc_id,lattgt1,lattgt2,lontgt1,lontgt2,varsrc,vartgt,num_models,auc,tpr,fpr,horizon
+/home/yihuang/Documents/CODE/fractalNet_/cynet2to3//ntb/models/113model,27.8,33.1,54.0,64.0,Bombing_Explosion-Facility_Infrastructure_Attack,Armed_Assault-Assassination-Hijacking-Hostage_Taking_Barricade_Incident-Hostage_Taking_Kidnapping,20,0.741827,0.27027,0.419355,7
+/home/yihuang/Documents/CODE/fractalNet_/cynet2to3//ntb/models/113model,27.8,33.1,54.0,64.0,VAR,Armed_Assault-Assassination-Hijacking-Hostage_Taking_Barricade_Incident-Hostage_Taking_Kidnapping,20,0.821051,0.560976,0.448905,7
+/home/yihuang/Documents/CODE/fractalNet_/cynet2to3//ntb/models/113model,27.8,33.1,54.0,64.0,Armed_Assault-Assassination-Hijacking-Hostage_Taking_Barricade_Incident-Hostage_Taking_Kidnapping,Armed_Assault-Assassination-Hijacking-Hostage_Taking_Barricade_Incident-Hostage_Taking_Kidnapping,20,0.748846,0.378378,0.505415,7
+/home/yihuang/Documents/CODE/fractalNet_/cynet2to3//ntb/models/113model,27.8,33.1,54.0,64.0,ALL,Armed_Assault-Assassination-Hijacking-Hostage_Taking_Barricade_Incident-Hostage_Taking_Kidnapping,20,0.7958,0.447368,0.383513,7
