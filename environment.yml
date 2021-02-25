@@ -1,0 +1,15 @@
+name: example-environment
+channels:
+  - conda-forge
+dependencies:
+  - numpy
+  - matplotlib
+  - pandas
+  - bokeh
+  - scikit-learn
+  - scipy
+  - seaborn
+  - six
+  - pydotplus
+  - pygraphviz
+  - tqdm
