@@ -1,4 +1,4 @@
-name: example-environment
+name: FractalNet Evironment
 channels:
   - conda-forge
 dependencies:
