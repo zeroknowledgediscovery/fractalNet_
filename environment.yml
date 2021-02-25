@@ -3,13 +3,17 @@ channels:
   - conda-forge
 dependencies:
   - numpy
-  - matplotlib
-  - pandas
-  - bokeh
-  - scikit-learn
   - scipy
+  - pandas
+  - pickle
+  - sodapy
+  - haversine
+  - joblib
+  - matplotlib
+  - scikit-learn
   - seaborn
-  - six
-  - pydotplus
-  - pygraphviz
   - tqdm
+  - PyYAML
+  - geopy
+  - geopandas
+  - contextily
