@@ -1,7 +1,15 @@
-name: FractalNet-Evironment
+name: example-environment
 channels:
   - conda-forge
 dependencies:
-  - numpy=1.20.1
-  - scipy=1.1.0
-  - pandas=1.1.5
+  - numpy
+  - matplotlib
+  - pandas
+  - bokeh
+  - scikit-learn
+  - scipy
+  - seaborn
+  - six
+  - pydotplus
+  - pygraphviz
+  - tqdm
