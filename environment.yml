@@ -2,18 +2,17 @@ name: example-environment
 channels:
   - conda-forge
 dependencies:
-  - numpy
-  - scipy
-  - pandas
-  - pickle
-  - sodapy
+  - numpy=1.20.1
+  - scipy=1.1.0
+  - pandas=1.1.5
+  - sodapy=2.1.0
   - haversine
-  - joblib
-  - matplotlib
-  - scikit-learn
-  - seaborn
-  - tqdm
-  - PyYAML
-  - geopy
-  - geopandas
-  - contextily
+  - joblib=1.0.0
+  - matplotlib=2.2.4
+  - scikit-learn=0.24.0
+  - seaborn=0.11.1
+  - tqdm=4.56.2
+  - PyYAML=5.1
+  - geopy=2.1.0
+  - geopandas=0.8.2
+  - contextily=1.1.0
