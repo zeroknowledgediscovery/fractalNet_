@@ -1,0 +1,19 @@
+name: example-environment
+channels:
+  - conda-forge
+dependencies:
+  - numpy
+  - scipy
+  - pandas
+  - pickle
+  - sodapy
+  - haversine
+  - joblib
+  - matplotlib
+  - scikit-learn
+  - seaborn
+  - tqdm
+  - PyYAML
+  - geopy
+  - geopandas
+  - contextily
