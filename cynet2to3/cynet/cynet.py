@@ -1250,6 +1250,7 @@ class simulateModel:
 			+ ' -t ' + str(tpr_threshold) + ' -f ' + str(fpr_threshold)
 		flexstr_arg = shlex.split(flexroc_str)
 		output_str = subprocess.check_output(flexstr_arg, shell=False)
+                
 		results = np.array(output_str.split())
 		auc = float(results[1])
 		tpr = float(results[7])
@@ -1278,8 +1279,8 @@ class simulateModel:
 			+ ' -w ' + self.DATA_PATH + ' -U ' + str(self.DERIVATIVE) + ' -s 1'
 		cyrstr_arg = shlex.split(cyrstr)
 		subprocess.check_call(cyrstr_arg, shell=False)
-		if not os.path.exists('chunks/'):
-			os.makedirs('chunks/')
+		# if not os.path.exists('chunks/'):
+		# 	os.makedirs('chunks/')
 		#subprocess.check_call('mv *.chk chunks/', shell=True)
 		with open(LOG_PATH,'r') as file:
 			content = file.readlines()[0]
@@ -1290,15 +1291,16 @@ class simulateModel:
 
 		for n in range(0,10):
 			subprocess.check_call('rm *{}.chk'.format(n), shell=True)
-		try:
-			subprocess.check_output('rm *.chk', shell=True)
-		except:
-			print("except")
-		try:
-			outs = subprocess.check_output('ls *.chk | wc -l',shell = True)
-			print(outs)
-		except:
-			print("except")
+		# try:
+		# 	subprocess.check_output('rm *.chk', shell=True)
+		# except:
+		# 	print("except")
+		# try:
+		# 	outs = subprocess.check_output('ls *.chk | wc -l', shell=True)
+                #         outs = outs.decode('utf8')
+		# 	print(outs)
+		# except:
+		# 	print("except")
 
 
 	def get_threshold(self, cynet_logfile, tpr=None, fpr=None,
@@ -1782,7 +1784,7 @@ def map_events_parallel(glob_path,model_nums,horizon, DATA_PATH, RUNLEN, VARNAME
 		kwargs- other arguments for cynet and flexroc. See simulateModel class.
 	'''
 	models_files = glob.glob(glob_path)
-	models_files = [m.split('.')[0] for m in models_files]
+	models_files = [m.rstrip('.json') for m in models_files]
 
 	CYNET_PATH = os.path.dirname(sys.modules['cynet'].__file__) + '/bin/cynet'
 	FLEXROC_PATH = os.path.dirname(sys.modules['cynet'].__file__) + '/bin/flexroc'
@@ -2094,7 +2096,7 @@ def cynet_chunker(glob_path,model_nums,horizon, DATA_PATH, RUNLEN, VARNAME,RES_P
 				Phase = False,):
 
 	models_files = glob.glob(glob_path)
-	models_files = [m.split('.')[0] for m in models_files]
+	models_files = [m.rstrip('.json') for m in models_files]
 
 	#CYNET_PATH = './bin/cynet'
 	#FLEXROC_PATH = './bin/flexroc'
@@ -2285,7 +2287,7 @@ def test_model_nums(sample_size,glob_path,model_nums,horizon, DATA_PATH, RUNLEN,
 	'''
 	args = []
 	models_files = glob.glob(glob_path)
-	models_files = [m.split('.')[0] for m in models_files]
+	models_files = [m.rstrip('.json') for m in models_files]
 	CYNET_PATH = os.path.dirname(sys.modules['cynet'].__file__) + '/bin/cynet'
 	FLEXROC_PATH = os.path.dirname(sys.modules['cynet'].__file__) + '/bin/flexroc'
 
@@ -2497,7 +2499,7 @@ class xgModels:
 			print("Processing on XgenESeSS finished.")
 
 		else:
-			with open(calls_name, 'wr') as file:
+			with open(calls_name, 'w') as file:
 				for INDEX in np.arange(INDICES):
 					xgstr= self.XgenESeSS_PATH +' -f ' + self.TS_PATH\
 					 + " -k \"  :" + str(INDEX) +  " \"  -B " + str(self.BEG)\
