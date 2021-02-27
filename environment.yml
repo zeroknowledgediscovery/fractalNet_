@@ -5,9 +5,6 @@ dependencies:
   - numpy
   - scipy
   - pandas
-  - pickle
-  - sodapy
-  - haversine
   - joblib
   - matplotlib
   - scikit-learn
@@ -17,3 +14,7 @@ dependencies:
   - geopy
   - geopandas
   - contextily
+  - pip:
+      - haversine
+      - sodapy
+      - pickle
