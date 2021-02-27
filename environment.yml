@@ -17,4 +17,3 @@ dependencies:
   - pip:
       - haversine
       - sodapy
-      - pickle
