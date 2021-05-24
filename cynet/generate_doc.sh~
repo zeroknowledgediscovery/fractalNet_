@@ -1,0 +1,2 @@
+#!/bin/bash
+pdoc --html ./cynet -o docs -f -c latex_math=True
