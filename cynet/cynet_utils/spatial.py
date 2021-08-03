@@ -189,7 +189,8 @@ def get_prediction(
         radius=0.01,
         detail=0.2,
         Z=1.0,
-        miles=50 #=======YI made miles in spatial relaxation a paramter
+        miles=50, #=======YI made miles in spatial relaxation a paramter
+        RETURN_PRED=False
     ):
 
     # =========================== DF column names ==========================START
@@ -237,7 +238,7 @@ def get_prediction(
                       df_fn2,columns=[lat_col, lon_col])
     fn= df_fn.index.size
     
-    print('tmporal comp: --> ', 'tp ',tp, ' fp ', fp, ' fn ',fn)
+    #print('tmporal comp: --> ', 'tp ',tp, ' fp ', fp, ' fn ',fn)
         
     # SPATIAL ADJUSTMENT
     lon_grid = np.arange(lon_min - radius, lon_max + radius, detail)
@@ -279,4 +280,8 @@ def get_prediction(
     fn = np.sum(xgfn > 2 * miles)
     
     df_tp_0 = df_intersect(df_tp, df_prd0,columns=[lat_col, lon_col])
+
+    if RETURN_PRED:
+        return fn, tp, fp, tp/(tp+fp), tp/(tp+fn), lon_mesh0, lat_mesh0, intensity, intensity0, df_gnd, df_fn,df_tp,df_fp,df_tp_0,df_prd0
+    
     return fn, tp, fp, tp/(tp+fp), tp/(tp+fn), lon_mesh0, lat_mesh0, intensity, intensity0, df_gnd, df_fn,df_tp,df_fp,df_tp_0
