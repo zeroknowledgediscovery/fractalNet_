@@ -46,10 +46,10 @@ __DEBUG__=False
 PRECISION=5
 
 def pars_name_to_coord(string):
-	base = os.path.basename(string)
-	l = base.split('#')
-	pos = l[0].find('.')-2
-	return [float(l[0][pos: -1]), float(l[1]), float(l[2]), float(l[3])]
+    base = os.path.basename(string)
+    l = base.split('#')
+    pos = l[0].find('.')-2
+    return [float(l[0][pos: -1]), float(l[1]), float(l[2]), float(l[3])]
 
 class spatioTemporal:
 	"""
@@ -355,16 +355,11 @@ class spatioTemporal:
 					& (df[self._coord2] > lon_[0])
 					& (df[self._coord2] <= lon_[1])]
 
-		if _types is not None:
-			df = df.loc[df[self._EVENT].isin(_types)]
-            
+		# make the DATE the index and keep only the event col
 		if self.selvar is not None:
 			for key in list(self.selvar.keys()):
-				df=df[df[key]==self.selvar[key]].dropna()
+				df=df[df[key]==self.selvar[key]]
 				TS_NAME=TS_NAME+str(self.selvar[key])
-                
-		if self._value_limits is not None:
-			df = df.loc[df[self._EVENT].between(self._value_limits[0],self._value_limits[1])].dropna()
                 
 		df=df[[self._EVENT]]
 		ts = []
@@ -378,13 +373,14 @@ class spatioTemporal:
 			f_name = os.path.join(new_path,base)
 		else:
 			f_name = old_split_file  
+		print(out)
 		out.to_csv(f_name,sep = ' ', header = False, index=False)
 
 	def swap_splits(self, glob_to_files, new_data, _types, new_path=None, pars_func=pars_name_to_coord):
 		self._logdf = new_data
 		files = glob.glob(glob_to_files)
 		for f in files:
-			self.swap_split_file(f, _types, new_path = new_path, pars_func=pars_func)
+			self.swap_split_file(f, _types, new_path = new_path, pars_func=pars_name_to_coord)
          
 	def get_rand_tiles(self,tiles=None,LAT=None,LON=None,
 					   EPS=None,_types=None,poly_tile=False,num_tiles=20):
